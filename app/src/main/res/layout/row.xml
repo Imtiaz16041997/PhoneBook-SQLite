@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
+    android:background="#2C2B18"
     android:layout_marginStart="5dp"
     >
 
@@ -17,7 +18,8 @@
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="#000"
+                android:textColor="@color/white"
+                android:textColorHint="#FBF5F5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name  : " />
@@ -26,8 +28,8 @@
                 android:id="@+id/textname"
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
-                android:hint="Here Name..."
-                android:textColor="#000"
+                android:textColor="@color/white"
+                android:textColorHint="#FBF5F5"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </TableRow>
@@ -37,7 +39,8 @@
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="#000"
+                android:textColor="@color/white"
+                android:textColorHint="#FBF5F5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone : " />
@@ -46,8 +49,8 @@
                 android:id="@+id/textphone"
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
-                android:hint="Here Phone..."
-                android:textColor="#000"
+                android:textColor="@color/white"
+                android:textColorHint="#FBF5F5"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </TableRow>
