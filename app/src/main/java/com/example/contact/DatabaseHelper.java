@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.widget.Toast;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -47,7 +48,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         statement.bindString(1,name);
         statement.bindString(2,phone);
 
-        statement.executeInsert();
+        if(name.length() !=0 && phone.length() !=0){
+            statement.executeInsert();
+        }
+
+
 
     }
 

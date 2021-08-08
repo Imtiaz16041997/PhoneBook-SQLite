@@ -57,8 +57,10 @@ public class RecordListActivity extends AppCompatActivity {
             mList.add(new Model(id,name,phone));
 
         }
-        mAdapter.notifyDataSetChanged();
 
+
+
+        mAdapter.notifyDataSetChanged();
         if(mList.size() == 0){
 
             Toast.makeText(getApplicationContext(), "No Data is Available", Toast.LENGTH_SHORT).show();
@@ -154,9 +156,23 @@ public class RecordListActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.update_dialog);
         dialog.setTitle("Update");
 
-        EditText updateNameId = dialog.findViewById(R.id.updateNameId);
-        EditText updatePhoneId = dialog.findViewById(R.id.updatePhoneId);
-        Button updatebuttonId = dialog.findViewById(R.id.updatebuttonId);
+       final EditText updateNameId = dialog.findViewById(R.id.updateNameId);
+       final EditText updatePhoneId = dialog.findViewById(R.id.updatePhoneId);
+       final Button updatebuttonId = dialog.findViewById(R.id.updatebuttonId);
+
+        //get Data Row Clicked  from SQLite
+
+        Cursor cursor  = MainActivity.mSQLiteHelper.getData("SELECT * FROM RECORD WHERE id="+position);
+        mList.clear();
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            updateNameId.setText(name);
+            String phone = cursor.getString(2);
+            updatePhoneId.setText(phone);
+            mList.add(new Model(id,name,phone));
+
+        }
 
 
         //set width of dialog

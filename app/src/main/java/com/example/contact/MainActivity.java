@@ -48,9 +48,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 try{
+
                     mSQLiteHelper.insertData(editTextname.getText().toString().trim(),
-                                              editTextphone.getText().toString().trim()
-                            );
+                                              editTextphone.getText().toString().trim());
+
                     Toast.makeText(getApplicationContext(), "Successfully Data Inserted", Toast.LENGTH_LONG).show();
 
                     //reset views
