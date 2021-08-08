@@ -35,13 +35,6 @@ public class RecordListActivity extends AppCompatActivity {
     ArrayList<Model> mList;
     RecordListAdapter mAdapter = null;
 
-//    Button mButton;
-
-    //Check Permission
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +49,6 @@ public class RecordListActivity extends AppCompatActivity {
         mList = new ArrayList<>();
         mAdapter = new RecordListAdapter(this,R.layout.row,mList);
         mListView.setAdapter(mAdapter);
-
-//        mButton = findViewById(R.id.phone_call);
-
-
-        if(ContextCompat.checkSelfPermission(RecordListActivity.this,Manifest.permission.CALL_PHONE)!=PackageManager.PERMISSION_GRANTED){
-            //When Permission is not granted
-            // i Request for permission
-            ActivityCompat.requestPermissions(RecordListActivity.this,new String[]{Manifest.permission.CALL_PHONE},100);
-        }
 
 
         //get all data from sqlite with cursor
