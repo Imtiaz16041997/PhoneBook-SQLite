@@ -3,19 +3,27 @@ package com.example.contact;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.contact.model.Model;
@@ -26,6 +34,13 @@ public class RecordListActivity extends AppCompatActivity {
     ListView mListView;
     ArrayList<Model> mList;
     RecordListAdapter mAdapter = null;
+
+//    Button mButton;
+
+    //Check Permission
+
+
+
 
 
     @Override
@@ -42,7 +57,14 @@ public class RecordListActivity extends AppCompatActivity {
         mAdapter = new RecordListAdapter(this,R.layout.row,mList);
         mListView.setAdapter(mAdapter);
 
+//        mButton = findViewById(R.id.phone_call);
 
+
+        if(ContextCompat.checkSelfPermission(RecordListActivity.this,Manifest.permission.CALL_PHONE)!=PackageManager.PERMISSION_GRANTED){
+            //When Permission is not granted
+            // i Request for permission
+            ActivityCompat.requestPermissions(RecordListActivity.this,new String[]{Manifest.permission.CALL_PHONE},100);
+        }
 
 
         //get all data from sqlite with cursor
@@ -58,21 +80,21 @@ public class RecordListActivity extends AppCompatActivity {
 
         }
 
-
-
         mAdapter.notifyDataSetChanged();
         if(mList.size() == 0){
 
             Toast.makeText(getApplicationContext(), "No Data is Available", Toast.LENGTH_SHORT).show();
         }
 
+
+
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 //Alert dialog to display options of update and delete
-
-                final CharSequence [] items = {"Update","Delete"};
+                final CharSequence [] items = {"Update","Delete","Call"};
+//                final CharSequence [] items = {"Update","Delete"};
                 AlertDialog.Builder dialog = new AlertDialog.Builder(RecordListActivity.this);
 
                 dialog.setTitle("Choose an Action");
@@ -100,6 +122,24 @@ public class RecordListActivity extends AppCompatActivity {
                             }
                             showDialogDelete(arrID.get(position));
                         }
+
+//                        if(i==2){
+//
+//                            String phone = view.findViewById(R.id.textphone).toString();
+//                            Intent intent = new Intent(Intent.ACTION_DIAL);
+//                            intent.setData(Uri.parse("tel:" + phone));
+//                            getBaseContext().startActivity(intent);
+//                        }
+                                //2nd try
+                        if(i==2){
+
+                            TextView tvPhone = view.findViewById(R.id.textphone);
+                            String phone = tvPhone.getText().toString();
+                            Intent intent = new Intent(Intent.ACTION_DIAL);
+                            intent.setData(Uri.parse("tel:" + phone));
+                            getBaseContext().startActivity(intent);
+                        }
+
                     }
                 });
                 dialog.show();
@@ -107,8 +147,10 @@ public class RecordListActivity extends AppCompatActivity {
             }
         });
 
+        //call
 
     }
+    //check permission
 
 
 
@@ -196,7 +238,7 @@ public class RecordListActivity extends AppCompatActivity {
                             position);
 
                     dialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "No Data is Available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
                 }catch(Exception error){
                     Log.e("Update error",error.getMessage());
                 }
