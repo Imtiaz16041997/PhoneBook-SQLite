@@ -5,41 +5,42 @@
     android:layout_width="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    android:background="#2C2B18"
     android:layout_height="match_parent">
+
 
     <EditText
         android:id="@+id/updateNameId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="315dp"
+        android:layout_height="47dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/round_border"
         android:ems="10"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHint="#FBF5F5"
         android:inputType="text"
-        android:hint="Name" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <EditText
         android:id="@+id/updatePhoneId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="315dp"
+        android:layout_height="47dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/round_border"
         android:ems="10"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHint="#FBF5F5"
         android:inputType="phone"
-        android:hint="Phone" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/updatebuttonId"
-        android:layout_width="match_parent"
+        android:layout_width="319dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/roboto_bold"
         android:hint="Update"
-        android:textColor="@color/purple_200"
+        android:textColor="@color/contact"
         android:textColorHint="#000000"
-        app:backgroundTint="#1DE9B6" />
+        android:textSize="20sp"
+        app:backgroundTint="#FF553E" />
 
 </LinearLayout>
