@@ -4,7 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RecordListActivity">
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/editSearch"-->
+<!--        android:padding="15dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="text"-->
+<!--        android:hint="Search Here..." />-->
 
     <ListView
         android:id="@+id/listViewId"

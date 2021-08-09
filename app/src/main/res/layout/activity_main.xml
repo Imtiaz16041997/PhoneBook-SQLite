@@ -4,55 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="40dp"
-    android:gravity="center"
     android:orientation="vertical"
-    android:background="#2C2B18"
+
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/editName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHint="#FBF5F5"
-        android:inputType="text"
-        android:hint="Name" />
+    <ImageView
+        android:layout_width="178dp"
+        android:layout_height="201dp"
+        app:srcCompat="@drawable/phone_book" />
 
-    <EditText
-        android:id="@+id/editPhone"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:inputType="phone"
-        android:textColorHint="#FBF5F5"
-        android:hint="Phone" />
+        android:layout_gravity="center"
+        android:text="PhoneBook"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="40sp" />
 
-    <Button
-        android:id="@+id/savebuttonId"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
-        android:hint="Save"
-        android:textColor="@color/purple_200"
-        android:textColorHint="#000000"
-        app:backgroundTint="#1DE9B6" />
+        android:padding="40dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
 
-    <Button
-        android:id="@+id/showbuttonId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="330dp"
+            android:layout_height="40dp"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
-        android:hint="Show"
-        android:textColor="@color/purple_200"
-        android:textColorHint="#000000"
-        app:backgroundTint="#1DE9B6" />
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="330dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        <Button
+            android:id="@+id/savebuttonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/roboto_bold"
+            android:hint="Save"
+            android:textColor="@color/contact"
+            android:textColorHint="#000000"
+            android:textSize="20sp"
+            app:backgroundTint="#FF553E" />
+
+        <Button
+            android:id="@+id/showbuttonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/roboto_bold"
+            android:hint="Show"
+            android:textColor="@color/contact"
+            android:textColorHint="#000000"
+            android:textSize="20sp"
+            app:backgroundTint="#FF553E" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -16,6 +16,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +36,8 @@ public class RecordListActivity extends AppCompatActivity {
     ListView mListView;
     ArrayList<Model> mList;
     RecordListAdapter mAdapter = null;
+//    EditText mSearchView;
+
 
 
     @Override
@@ -44,7 +48,7 @@ public class RecordListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Record List");
 
-
+//        mSearchView = findViewById(R.id.editSearch);
         mListView=findViewById(R.id.listViewId);
         mList = new ArrayList<>();
         mAdapter = new RecordListAdapter(this,R.layout.row,mList);
@@ -107,14 +111,7 @@ public class RecordListActivity extends AppCompatActivity {
                             showDialogDelete(arrID.get(position));
                         }
 
-//                        if(i==2){
-//
-//                            String phone = view.findViewById(R.id.textphone).toString();
-//                            Intent intent = new Intent(Intent.ACTION_DIAL);
-//                            intent.setData(Uri.parse("tel:" + phone));
-//                            getBaseContext().startActivity(intent);
-//                        }
-                                //2nd try
+                                //Call try
                         if(i==2){
 
                             TextView tvPhone = view.findViewById(R.id.textphone);
@@ -131,10 +128,29 @@ public class RecordListActivity extends AppCompatActivity {
             }
         });
 
-        //call
+        //Search Filter
+
+//        mSearchView.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
+
+
 
     }
-    //check permission
+
 
 
 
