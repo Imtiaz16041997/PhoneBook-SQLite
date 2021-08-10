@@ -151,7 +151,7 @@ public class RecordListActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence2, int i, int i1, int i2) {
-                String select = "SELECT * FROM RECORD WHERE name ='"+charSequence2+"'";
+                String select = "SELECT * FROM RECORD WHERE name LIKE '"+charSequence2+"%'";
                 Cursor cursor = mSQLiteHelper.searchData(select);
 
                 mList.clear();
