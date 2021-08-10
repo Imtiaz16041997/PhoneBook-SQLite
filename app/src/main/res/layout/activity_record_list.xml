@@ -8,15 +8,26 @@
     tools:context=".RecordListActivity">
 
 
-<!--    <EditText-->
-<!--        android:id="@+id/editSearch"-->
-<!--        android:padding="15dp"-->
-<!--        android:layout_margin="10dp"-->
+    <EditText
+        android:id="@+id/searchViewId"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Search Here..." />
+
+
+
+<!--    <SearchView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="text"-->
-<!--        android:hint="Search Here..." />-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:iconifiedByDefault="false"-->
+<!--        android:queryHint="Search here"-->
+<!--        android:id="@+id/searchViewId"-->
+<!--        />-->
 
     <ListView
         android:id="@+id/listViewId"

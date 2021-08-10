@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -101,13 +104,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
             return database.rawQuery(sql,null);
 
+    }
 
+    public Cursor searchData(String sql2){
+
+        SQLiteDatabase database = this.getReadableDatabase();
+        return database.rawQuery(sql2,null);
 
 
     }
-
-
-
-
 
 }

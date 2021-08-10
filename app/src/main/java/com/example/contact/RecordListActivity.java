@@ -1,5 +1,7 @@
 package com.example.contact;
 
+import static com.example.contact.MainActivity.mSQLiteHelper;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,18 +27,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.contact.model.Model;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class RecordListActivity extends AppCompatActivity {
 
     ListView mListView;
     ArrayList<Model> mList;
     RecordListAdapter mAdapter = null;
-//    EditText mSearchView;
+//    SearchView mSearchView;
+    EditText mSearchView;
 
 
 
@@ -48,16 +54,27 @@ public class RecordListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Record List");
 
-//        mSearchView = findViewById(R.id.editSearch);
+       mSearchView = findViewById(R.id.searchViewId);
         mListView=findViewById(R.id.listViewId);
         mList = new ArrayList<>();
         mAdapter = new RecordListAdapter(this,R.layout.row,mList);
         mListView.setAdapter(mAdapter);
 
 
+
+//        get all data and search
+        Cursor cursor2 = mSQLiteHelper.searchData("SELECT * FROM RECORD WHERE name 'LIKE' '%' AND phone 'LIKE' '%' ");
+        if (cursor2.getCount() > 0 ){
+            Toast.makeText(RecordListActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
         //get all data from sqlite with cursor
 
-        Cursor cursor  = MainActivity.mSQLiteHelper.getData("SELECT * FROM RECORD");
+        Cursor cursor  = mSQLiteHelper.getData("SELECT * FROM RECORD");
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
@@ -73,7 +90,6 @@ public class RecordListActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "No Data is Available", Toast.LENGTH_SHORT).show();
         }
-
 
 
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -92,7 +108,7 @@ public class RecordListActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(i == 0){
                             //update
-                            Cursor c = MainActivity.mSQLiteHelper.getData("SELECT id FROM RECORD");
+                            Cursor c = mSQLiteHelper.getData("SELECT id FROM RECORD");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while(c.moveToNext() ){
                                 arrID.add(c.getInt(0));
@@ -102,7 +118,7 @@ public class RecordListActivity extends AppCompatActivity {
                         }
                         if(i==1){
                                 //delete
-                            Cursor c = MainActivity.mSQLiteHelper.getData("SELECT id FROM RECORD");
+                            Cursor c = mSQLiteHelper.getData("SELECT id FROM RECORD");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
 
                             while(c.moveToNext()){
@@ -130,28 +146,41 @@ public class RecordListActivity extends AppCompatActivity {
 
         //Search Filter
 
-//        mSearchView.addTextChangedListener(new TextWatcher() {
+        mSearchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.d("data", charSequence.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence2, int i, int i1, int i2) {
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        //Search Filter
+
+//        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 //            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
+//            public boolean onQueryTextSubmit(String s) {
+//                return false;
 //            }
 //
 //            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
+//            public boolean onQueryTextChange(String s) {
+//                mAdapter.getFilter().filter(s);
+//                return true;
 //            }
 //        });
 
-
-
     }
-
-
 
 
     //DeleteDialog
@@ -167,7 +196,7 @@ public class RecordListActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 try{
-                    MainActivity.mSQLiteHelper.deleteData(idRecord);
+                    mSQLiteHelper.deleteData(idRecord);
                     Toast.makeText(getApplicationContext(), "Delete Successfully", Toast.LENGTH_SHORT).show();
                 }catch (Exception error){
                     Log.e("Delete error",error.getMessage());
@@ -204,7 +233,7 @@ public class RecordListActivity extends AppCompatActivity {
 
         //get Data Row Clicked  from SQLite
 
-        Cursor cursor  = MainActivity.mSQLiteHelper.getData("SELECT * FROM RECORD WHERE id="+position);
+        Cursor cursor  = mSQLiteHelper.getData("SELECT * FROM RECORD WHERE id="+position);
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
@@ -232,7 +261,7 @@ public class RecordListActivity extends AppCompatActivity {
 
                 try{
 
-                    MainActivity.mSQLiteHelper.updateData(
+                    mSQLiteHelper.updateData(
                             updateNameId.getText().toString().trim(),
                             updatePhoneId.getText().toString().trim(),
                             position);
@@ -253,7 +282,7 @@ public class RecordListActivity extends AppCompatActivity {
 
         //get all data from SQLite
 
-        Cursor cursor = MainActivity.mSQLiteHelper.getData("SELECT * FROM RECORD");
+        Cursor cursor = mSQLiteHelper.getData("SELECT * FROM RECORD");
         mList.clear();
         while(cursor.moveToNext()){
             int id = cursor.getInt(0);
