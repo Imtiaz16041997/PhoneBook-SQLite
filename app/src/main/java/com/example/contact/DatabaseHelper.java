@@ -70,9 +70,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteStatement statement = database.compileStatement(sql);
 
+
+
         statement.bindString(1,name);
         statement.bindString(2,phone);
         statement.bindDouble(3,(double)id);
+
 
         statement.execute();
         database.close();
@@ -106,12 +109,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public Cursor searchData(String sql2){
-
-        SQLiteDatabase database = this.getReadableDatabase();
-        return database.rawQuery(sql2,null);
-
-
-    }
+//    public Cursor searchData(String sql2){
+//
+//        SQLiteDatabase database = this.getReadableDatabase();
+//        return database.rawQuery(sql2,null);
+//
+//    }
 
 }

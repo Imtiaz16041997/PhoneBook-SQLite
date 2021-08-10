@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 try{
 
                     mSQLiteHelper.insertData(editTextname.getText().toString().trim(),
@@ -82,5 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }
