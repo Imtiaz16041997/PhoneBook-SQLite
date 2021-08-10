@@ -45,7 +45,6 @@ public class RecordListActivity extends AppCompatActivity {
     EditText mSearchView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,15 +60,13 @@ public class RecordListActivity extends AppCompatActivity {
         mListView.setAdapter(mAdapter);
 
 
-
 //        get all data and search
-        Cursor cursor2 = mSQLiteHelper.searchData("SELECT * FROM RECORD WHERE name 'LIKE' '%' AND phone 'LIKE' '%' ");
+        String select = "Select name, phone from RECORD Where(name like " + "'%name%'" +
+                ")";
+        Cursor cursor2 = mSQLiteHelper.searchData(select);
         if (cursor2.getCount() > 0 ){
             Toast.makeText(RecordListActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
         }
-
-
-
 
 
         //get all data from sqlite with cursor
