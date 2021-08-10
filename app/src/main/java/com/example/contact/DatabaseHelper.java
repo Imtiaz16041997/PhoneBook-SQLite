@@ -109,11 +109,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-//    public Cursor searchData(String sql2){
-//
-//        SQLiteDatabase database = this.getReadableDatabase();
-//        return database.rawQuery(sql2,null);
-//
-//    }
+    public Cursor searchData(String sql2){
+
+        SQLiteDatabase database = this.getReadableDatabase();
+        return database.rawQuery(sql2,null);
+
+    }
 
 }

@@ -61,12 +61,12 @@ public class RecordListActivity extends AppCompatActivity {
 
 
 //        get all data and search
-//        String select = "Select name, phone from RECORD Where(name like " + "'%name%'" +
-//                ")";
-//        Cursor cursor2 = mSQLiteHelper.getData(select);
-//        if (cursor2.getCount() > 0 ){
-//            Toast.makeText(RecordListActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
-//        }
+        String select = "Select name, phone from RECORD Where(name like " + "'%name%'" +
+                ")";
+        Cursor cursor2 = mSQLiteHelper.searchData(select);
+        if (cursor2.getCount() > 0 ){
+            Toast.makeText(RecordListActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+        }
 
 
         //get all data from sqlite with cursor
@@ -152,8 +152,9 @@ public class RecordListActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence2, int i, int i1, int i2) {
                 String select = "SELECT * FROM RECORD WHERE name ='"+charSequence2+"'";
-                Cursor cursor = mSQLiteHelper.getData(select);
+                Cursor cursor = mSQLiteHelper.searchData(select);
 
+                mList.clear();
                 while(cursor.moveToNext()) {
                     int id = cursor.getInt(0);
                     String name = cursor.getString(1);
@@ -161,7 +162,6 @@ public class RecordListActivity extends AppCompatActivity {
                     mList.add(new Model(id,name,phone));
                 }
 
-                mList.clear();
                 mAdapter.notifyDataSetChanged();
 
 
