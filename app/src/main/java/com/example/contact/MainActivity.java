@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mSQLiteHelper.queryData("CREATE TABLE IF NOT EXISTS RECORD (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR , phone VARCHAR )");
 
 
+
         //add record to SQLite
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,16 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try{
+                    String username = editTextname.getText().toString().trim();
+                    String phoneNumber = editTextphone.getText().toString().trim();
 
-                    mSQLiteHelper.insertData(editTextname.getText().toString().trim(),
-                                              editTextphone.getText().toString().trim());
+                    if(username.equals("") || phoneNumber.equals("")){
+                        Toast.makeText(getApplicationContext(), "Fields Required", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(getApplicationContext(), "Successfully Data Inserted", Toast.LENGTH_LONG).show();
+                    }else {
 
-                    //reset views
-                    editTextname.setText("");
-                    editTextphone.setText("");
-                }catch(Exception e){
+                        mSQLiteHelper.insertData(username, phoneNumber);
+                        Toast.makeText(getApplicationContext(), "Successfully Data Inserted", Toast.LENGTH_LONG).show();
+
+                        //reset views
+                        editTextname.setText("");
+                        editTextphone.setText("");
+
+                    }}catch(Exception e){
+
                     e.printStackTrace();
                 }
             }
@@ -77,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 startActivity(new Intent(getApplicationContext(),RecordListActivity.class));
+
 
             }
         });

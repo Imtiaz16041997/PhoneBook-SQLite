@@ -85,8 +85,9 @@ public class RecordListActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                 //Alert dialog to display options of update and delete
+
                 final CharSequence [] items = {"Update","Delete","Call"};
-//                final CharSequence [] items = {"Update","Delete"};
+
                 AlertDialog.Builder dialog = new AlertDialog.Builder(RecordListActivity.this);
 
                 dialog.setTitle("Choose an Action");
@@ -97,6 +98,7 @@ public class RecordListActivity extends AppCompatActivity {
                         if(i == 0){
                             //update
                             Cursor c = mSQLiteHelper.getData("SELECT id FROM RECORD");
+
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while(c.moveToNext() ){
                                 arrID.add(c.getInt(0));
