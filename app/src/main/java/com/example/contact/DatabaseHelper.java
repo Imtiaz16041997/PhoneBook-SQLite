@@ -44,6 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Query to insert record in database table
         //Here RECORD is a table name in db we will create in mainactivity
         String sql = "INSERT INTO RECORD VALUES (NULL, ? ,?)";
+//        String sq2 = "SELECT * FROM RECORD WHERE phone ='"+phone+"'";
 
         SQLiteStatement statement = database.compileStatement(sql);
         statement.clearBindings();
@@ -54,7 +55,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if(name.length() !=0 && phone.length() !=0){
             statement.executeInsert();
         }
-
 
 
     }
@@ -109,6 +109,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public Cursor findTask(String phone) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM RECORD WHERE phone ='" + phone + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
 
+    }
 
 }

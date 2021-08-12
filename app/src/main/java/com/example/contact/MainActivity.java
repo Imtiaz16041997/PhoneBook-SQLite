@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,16 +68,22 @@ public class MainActivity extends AppCompatActivity {
 
 
                 try{
-
-                    if(awesomeValidation.validate()) {
-
-
+                    if(awesomeValidation.validate()){
+                    Cursor c=mSQLiteHelper.findTask(editTextphone.getText().toString().trim());
+                    if(c.moveToFirst())
+                    {
+                        Toast.makeText(getApplicationContext(), "Already Exist", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        // Inserting record
                         mSQLiteHelper.insertData(editTextname.getText().toString().trim(), editTextphone.getText().toString().trim());
                         Toast.makeText(getApplicationContext(), "Successfully Data Inserted", Toast.LENGTH_LONG).show();
 
                         //reset views
                         editTextname.setText("");
                         editTextphone.setText("");
+                    }
 
                     }}catch(Exception e){
 
