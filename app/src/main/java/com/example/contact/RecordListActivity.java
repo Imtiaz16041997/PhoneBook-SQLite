@@ -97,24 +97,13 @@ public class RecordListActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(i == 0){
                             //update
-                            Cursor c = mSQLiteHelper.getData("SELECT id FROM RECORD");
-
-                            ArrayList<Integer> arrID = new ArrayList<Integer>();
-                            while(c.moveToNext() ){
-                                arrID.add(c.getInt(0));
-                            }
-                            //Show update Dialog
-                            showDialogUpdate(RecordListActivity.this,arrID.get(position));
+                            int contactId = mList.get(position).getId();
+                            showDialogUpdate(RecordListActivity.this, contactId);
                         }
                         if(i==1){
-                                //delete
-                            Cursor c = mSQLiteHelper.getData("SELECT id FROM RECORD");
-                            ArrayList<Integer> arrID = new ArrayList<Integer>();
-
-                            while(c.moveToNext()){
-                                arrID.add(c.getInt(0));
-                            }
-                            showDialogDelete(arrID.get(position));
+                            //delete
+                            int contactId = mList.get(position).getId();
+                            showDialogDelete(contactId);
                         }
 
                                 //Call try

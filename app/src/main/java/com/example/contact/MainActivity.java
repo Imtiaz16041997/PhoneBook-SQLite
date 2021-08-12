@@ -10,6 +10,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
 
                     if(awesomeValidation.validate()) {
+
 
                         mSQLiteHelper.insertData(editTextname.getText().toString().trim(), editTextphone.getText().toString().trim());
                         Toast.makeText(getApplicationContext(), "Successfully Data Inserted", Toast.LENGTH_LONG).show();

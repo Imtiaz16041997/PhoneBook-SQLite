@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/updateNameId"
-        android:layout_width="315dp"
+        android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_border"
@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/updatePhoneId"
-        android:layout_width="315dp"
+        android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_border"
@@ -32,7 +32,7 @@
 
     <Button
         android:id="@+id/updatebuttonId"
-        android:layout_width="319dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_button"

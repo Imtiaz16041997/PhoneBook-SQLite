@@ -12,18 +12,18 @@
         android:layout_height="201dp"
         app:srcCompat="@drawable/phone_book" />
 
-    <TextView
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="PhoneBook"
-        android:fontFamily="@font/roboto_bold"
-        android:textSize="40sp" />
+<!--    <TextView-->
+<!--        android:layout_width="310dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:text="PhoneBook"-->
+<!--        android:fontFamily="@font/roboto_bold"-->
+<!--        android:textSize="40sp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+
         android:padding="40dp"
         android:layout_gravity="center"
         android:orientation="vertical"
@@ -31,7 +31,7 @@
 
         <EditText
             android:id="@+id/editName"
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/round_border"
             android:ems="10"
@@ -42,7 +42,7 @@
 
         <EditText
             android:id="@+id/editPhone"
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/round_border"
