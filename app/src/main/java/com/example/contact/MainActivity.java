@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 try{
                     if(awesomeValidation.validate()){
+
                     Cursor c=mSQLiteHelper.findTask(editTextphone.getText().toString().trim());
                     if(c.moveToFirst())
                     {

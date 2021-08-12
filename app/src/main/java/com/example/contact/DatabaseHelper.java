@@ -108,7 +108,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return database.rawQuery(sql,null);
 
     }
-
+            //Checking The Data Exist or Not
     public Cursor findTask(String phone) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM RECORD WHERE phone ='" + phone + "'";
