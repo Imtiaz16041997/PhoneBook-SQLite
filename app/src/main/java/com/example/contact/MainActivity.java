@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     Cursor c=mSQLiteHelper.findTask(editTextphone.getText().toString().trim());
                     if(c.moveToFirst())
                     {
-                        Toast.makeText(getApplicationContext(), "Already Exist", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Already Exist", Toast.LENGTH_SHORT).show();
                     }
                     else
                     {

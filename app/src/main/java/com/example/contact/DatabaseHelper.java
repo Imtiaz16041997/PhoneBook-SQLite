@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Query to insert record in database table
         //Here RECORD is a table name in db we will create in mainactivity
-        String sql = "INSERT INTO RECORD VALUES (NULL, ? ,?)";
+        String sql = "INSERT INTO RECORD VALUES  (NULL, ? ,?)";
 //        String sq2 = "SELECT * FROM RECORD WHERE phone ='"+phone+"'";
 
         SQLiteStatement statement = database.compileStatement(sql);
