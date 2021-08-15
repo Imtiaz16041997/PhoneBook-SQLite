@@ -3,9 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:background="#2C2B18"
-    android:layout_marginStart="5dp"
+    android:layout_margin="20dp"
+    android:background="@drawable/row_color"
+
     >
 
 
@@ -18,17 +18,17 @@
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textColorHint="#FBF5F5"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name  : " />
 
             <TextView
                 android:id="@+id/textname"
-                android:layout_width="308dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="@color/fukra"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -39,8 +39,8 @@
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textColorHint="#FBF5F5"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone : " />
@@ -51,7 +51,7 @@
                 android:id="@+id/textphone"
                 android:layout_width="308dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="#FBF5F5"
                 android:textSize="20sp"
                 android:textStyle="bold" />

@@ -143,7 +143,6 @@ public class RecordListActivity extends AppCompatActivity {
                     String phone = cursor.getString(2);
                     mList.add(new Model(id,name,phone));
                 }
-
                 mAdapter.notifyDataSetChanged();
 
 
@@ -188,6 +187,8 @@ public class RecordListActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 dialogInterface.dismiss();
+                mAdapter.notifyDataSetChanged();
+
 
             }
         });
@@ -220,7 +221,7 @@ public class RecordListActivity extends AppCompatActivity {
             mList.add(new Model(id,name,phone));
 
         }
-
+        mAdapter.notifyDataSetChanged();
 
         //set width of dialog
         int width = (int)(activity.getResources().getDisplayMetrics().widthPixels * 0.95);

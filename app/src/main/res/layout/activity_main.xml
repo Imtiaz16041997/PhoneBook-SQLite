@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/color"
     tools:context=".MainActivity">
+
+
 
     <ImageView
         android:layout_width="178dp"
         android:layout_height="201dp"
-        app:srcCompat="@drawable/phone_book" />
+        app:srcCompat="@drawable/phone_bookraww" />
 
 <!--    <TextView-->
 <!--        android:layout_width="310dp"-->
